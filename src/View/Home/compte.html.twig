@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %} {% block content %}
+<div class="container text-center">
+    <h1 style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">{{ session.user.username }}</h1>
+    <div class="d-flex justify-content-evenly mt-3">
+
+        {% for key, score in scores %}
+        <div class="card col-md-4 m-3 overflow" style="width: 18rem;">
+            <a class="a-img-txt" href="/game/index/{{ key }}">
+                <img src="{{ score.image }}" class="card-img-top" alt="{{game.id}}">
+                <span class="banner nes-text " style="color: white;">{{ score.status }}</span>
+            </a>
+            <div class="card-body text-center">
+                <h5 class="card-title nes-text is-primary text-center">{{ score.name }}</h5>
+                <h5>Top score: {{score.score}}</h5>
+                <a href="/game/index/{{key}}" class="nes-btn is-success text-center">Améliorer votre score</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

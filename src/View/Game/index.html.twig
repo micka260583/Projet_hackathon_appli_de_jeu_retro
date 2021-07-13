@@ -1,0 +1,42 @@
+{% extends "layout.html.twig" %}{% block content %}
+
+<body>
+    {% if not session.user %}
+    <div class="container text-center p-5 mt-5">
+        <div class="row">
+            <h1 style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Vous devez être connecté pour jouer ...</h1>
+        </div>
+        <div class="row mt-5 d-flex justify-content-evenly">
+            <div class="col d-flex flex-column align-items-center">
+                <h5 style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Si vous avez déjà un compte</h5>
+                <i class="fas fa-arrow-down fs-1 mb-2" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;"></i>
+                <a href="/security/login" class="btn btn-primary" style="background: linear-gradient(to right, rgba(160, 126, 255), rgba(154, 255, 255));color: #cf22ec;">Connexion</a>
+            </div>
+            <div class="col d-flex flex-column align-items-center">
+                <h5 style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Si c'est votre première visite</h5>
+                <i class="fas fa-arrow-down fs-1 mb-2" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;"></i>
+                <a href="/security/register" class="btn btn-primary" style="background: linear-gradient(to right, rgba(160, 126, 255), rgba(154, 255, 255));color: #cf22ec;">S'enregister</a>
+            </div>
+        </div>
+    </div> {% else %}
+    <div class="container pt-5 d-flex flex-column align-items-center">
+
+        <h1 class="text-center mb-2" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">{{game.name}}</h1>
+        <div class="p-3">
+            {% include "Game/_" ~ game.data_name ~ ".html.twig" %}
+        </div>
+        <div class="mt-3 d-flex flex-column align-items-center">
+            <div class="mb-3" id="rules" style="max-width:48rem">
+                <h3 style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Règles:</h3>
+                <p style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">{{game.rules}}</p>
+            </div>
+            <div id="facts" style="max-width:48rem">
+                <h3 style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">A propos du jeu:</h3>
+                <p style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">{{game.facts}}</p>
+            </div>
+        </div>
+        <div class="visually-hidden" id="game" data-id="{{game.id}}"></div>
+    </div>
+    {% endif %} {% endblock %} {% block javascript %} {% if game %}
+    <script src="/assets/scripts/{{ game.data_name }}.js"></script>
+    {% endif %} {% endblock %}

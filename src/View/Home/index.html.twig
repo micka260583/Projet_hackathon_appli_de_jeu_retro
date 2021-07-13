@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %} {% block content %}
+<div class="container text-center mb-5">
+    <p style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Bonjour et bienvenue sur Marstation la première appli pour REM (Robot Esseulé sur Mars) <br><br> Si vous êtes un REM cette appli est faite pour vous!!!</p>
+</div>
+<h1 class="text-center nes-text mt-5 mb-5" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Jeux les plus populaires</h1>
+<div id="games" class="d-flex justify-content-center row mt-5">
+    {% for game in games %}
+    <div class="card col-md-4 m-3 overflow" style="width: 18rem;">
+        <a class="a-img-txt" href="/game/index/{{game.id}}">
+            <img src="{{ game.image }}" class="card-img-top" alt="{{game.id}}"> {% if game.rules|length <= 150 %} <span class="a-txt c1 nes-text text-center" style="color: white;">{{ game.rules}}</span>
+                {% else %}
+                <span class="a-txt c1 nes-text text-center" style="color: white;">{{ game.rules|slice(0, 148) ~ '...'}}</span> {% endif %}
+                <span class="banner nes-text " style="color: white;">{{ game.status }}</span>
+        </a>
+        <div class="card-body text-center">
+            <h5 class="card-title nes-text is-primary text-center" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">{{ game.name }}</h5>
+            <a href="/game/index/{{game.id}}" class="nes-btn is-success text-center">Jouer</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

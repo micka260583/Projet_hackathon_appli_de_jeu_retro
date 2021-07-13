@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %} {% block content %}
+<div class="container mt-5 d-flex flex-column align-items-center">
+    <h2 class="mb-5 text-center">Vous êtes perdu dans l'espace</h2>
+    <img src="/assets/images/nasa404.png" alt="nasa" style="max-width: 60vw">
+    <h3 class="mb-5 mt-5">Redirection sur Mars...</h3>
+    <div class="spinner-border mb-4" style="width: 5rem; height: 5rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+{% endblock %} {% block javascript %}
+<script>
+    setTimeout(() => {
+        window.location.replace('/home/index')
+    }, 5000)
+</script>
+{% endblock %}

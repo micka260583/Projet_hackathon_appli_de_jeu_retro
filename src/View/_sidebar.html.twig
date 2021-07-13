@@ -1,0 +1,20 @@
+<button class="nes-btn is-primary" id="meteo" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <i class="fas fa-temperature-high"></i>
+        </button>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background: linear-gradient(to right, rgba(160, 126, 255), rgba(154, 255, 255));">
+    <div class="text-end">
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-header d-flex flex-column align-items-center">
+        <h5 class="offcanvas-title mt-5 mb-2" id="offcanvasExampleLabel">Meteo Mars</h5>
+    </div>
+    <div class="offcanvas-body mt-2 mb-5">
+        <div>
+            <iframe src='https://mars.nasa.gov/layout/embed/image/mslweather/' width='360' height='500' scrolling='no' frameborder='0'></iframe>
+        </div>
+    </div>
+    <div class="offcanvas-footer text-center p-3">
+        <p>Si vous aimez l'image d'arrière plan actuelle, vous pouvez la télécharger <a id="img-link" href="" target="_blank">ici</a>.</p>
+    </div>
+</div>

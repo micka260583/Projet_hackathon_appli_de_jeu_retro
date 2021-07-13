@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %} {% block content %}
+<div class="container d-flex justify-content-evenly">
+    <div id="solo">
+        <h1 style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Top scores solo</h1>
+        <table class="table table-hover mt-5 text-center">
+            <thead>
+                <tr>
+
+                    <th scope="col" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Jeux</th>
+                    <th scope="col" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Joueur</th>
+                    <th scope="col" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for score in scores %}
+                <tr data-id="{{ score.0.game_id }}">
+
+                    <td scope="row" style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">{{ score.0.game_name }}</td>
+                    <td style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">{{ score.0.username }}</td>
+                    <td style="color: #cf22ec; text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;">{{ score.0.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %} {% block javascript %}
+<script>
+    jQuery(function() {
+        $('tbody').children().each(function() {
+            $(this).click(() => {
+                window.location.replace('/score/show/' + $(this).data('id').toString())
+            })
+        })
+    })
+</script>
+{% endblock %}

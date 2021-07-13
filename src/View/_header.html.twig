@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: linear-gradient(to bottom, rgba(160, 126, 255), rgba(154, 255, 255)); height: 5rem;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="https://zupimages.net/up/21/19/hn92.png" class="img-fluid" alt="Responsive image"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="me-auto mb-2 mb-lg-0 d-flex justify-content-start">
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/">Accueil</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/home/game">Jeux</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/score/index">Scoreboard</a>
+                </div>
+                {% if session.user %}
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/home/account">Mon compte</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="mb-2 mb-lg-0 d-none d-lg-flex justify-content-end">
+                {% if session.user %}
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/security/logout">Déconnexion</a>
+                </div>
+                {% else %}
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/security/login">Connexion</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/security/register">S'enregistrer</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="mb-2 mb-lg-0 d-flex justify-content-start d-lg-none">
+                {% if session.user %}
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/security/logout">Déconnexion</a>
+                </div>
+                {% else %}
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/security/login">Connexion</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" style="color:black" href="/security/register">S'enregistrer</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
